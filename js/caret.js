@@ -3,8 +3,6 @@ var Caret = function (element) {
   this.document = element.ownerDocument;
   this.window = this.document.defaultView || this.document.parentWindow;
   this.selection = this.window.getSelection();
-  // this.updateRange();
-  // $(this.el).on('mouseup keyup', $.proxy(this.updateRange, this));
 };
 
 // update Range object
@@ -105,4 +103,9 @@ Caret.prototype.select = function (node, start, end) {
   range.setStart(node, 30);
   range.setEnd(node, 38);
   return this.setRange(range);
+};
+
+// focus
+Caret.prototype.focus = function () {
+  return this.setRange(this.range.cloneRange());
 };

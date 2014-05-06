@@ -1,0 +1,17 @@
+<span class="modal-close-icon" data-modal="hide">
+  <i class="fa fa-times fa-lg"></i>
+</span>
+<header class="modal-header">
+  {{ header }}
+</header>
+<div class="modal-content">
+  <label>
+    {{name}}
+    <div>
+      <input class="modal-text-field" name="{{name}}" type="text">
+    </div>
+  </label>
+</div>
+<footer class="modal-footer">
+  <button class="button button-blue">Save</button> <button class="button" data-modal="hide">Cancel</button>
+</footer>

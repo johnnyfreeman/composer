@@ -4,56 +4,70 @@ var Modal = function (element) {
 
 Modal.prototype.hide = function (duration) {
   var deferred = Q.defer();
-  $(this.el).velocity({
-    opacity: 0//,
-    // top: '-30',
-    // left: '-300'
-  }, {
-    complete: function () { deferred.resolve(this); },
+
+  var $overlay = $(this.el);
+  var $container = $overlay.find('.modal-container');
+
+  // fade in overlay
+  $overlay.velocity({opacity: 0}, {
     display: 'none',
     duration: duration
   });
+
+  // move container in view
+  $container.velocity({
+    top: '-500px'
+  }, {
+    complete: function () { deferred.resolve(this); },
+    duration: duration
+  });
+
   return deferred.promise;
 };
 
 Modal.prototype.show = function (duration) {
   var deferred = Q.defer();
-  $(this.el).velocity({
-    opacity: 1//,
-    // top: '+30',
-    // left: '+300'
-  }, {
-    complete: function () { deferred.resolve(this); },
+
+  var $overlay = $(this.el);
+  var $container = $overlay.find('.modal-container');
+
+  // fade in overlay
+  $overlay.velocity({opacity: 1}, {
     display: 'block',
     duration: duration
   });
+
+  // move container in view
+  $container.velocity({
+    top: '-100px'
+  }, {
+    complete: function () { deferred.resolve(this); },
+    duration: duration
+  });
+
   return deferred.promise;
 };
 
-Modal.prototype.prompt = function (name, duration) {
-  var $content = $(this.el).find('.content');
-  $content.html(templates.prompt.render({name:name}));
-  var $input = $content.find('input');
-  $input.val('');
+Modal.prototype.prompt = function (options) {
+
+  // render modal
+  var $container = $(this.el).find('.modal-container');
+  $container.html(templates.modal.render(options.data));
+
   // show
-  return this.show(duration)
+  return this.show(options.duration)
     // prompt
     .then(function (modalEl) {
       var deferred = Q.defer();
       // set on keyup enter event
-      $input.trigger('focus').on('keyup', function (e) {
+      $container.find('input').trigger('focus').on('keyup', function (e) {
         if (e.keyCode == 13) {
           var data = {};
-          data[name] = $(this).val();
+          data[options.data.name] = $(this).val();
           deferred.resolve(data);
         }
       });
+      $container.find('[data-modal="hide"]').on('click', deferred.reject);
       return deferred.promise;
-    })
-    // hide modal, return input value
-    .then(function (val) {
-      return modal.hide(duration/2).then(function () {
-        return val;
-      });
     });
 };

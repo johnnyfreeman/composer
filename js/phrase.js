@@ -13,8 +13,10 @@ var Phrase = function (props) {
 // collect and necessary user 
 // input and render the phrase
 Phrase.prototype.compile = function () {
-  if (this.variables.length === 0) return this.phrase = this.template.render({});
-  return this.prompt(0).then(this.render.bind(this));
+  var result = '';
+  if (this.variables.length > 0)
+    result = this.prompt(0);
+  return Q.when(result, this.render.bind(this));
 };
 
 // render the template data 
@@ -26,13 +28,26 @@ Phrase.prototype.render = function () {
 
 // prompt for given variable iterator
 Phrase.prototype.prompt = function (i) {
-  var variable, promise;
-  variable = new PhraseVariable(this.variables[i]);
+  var variable, promise, hideModal;
+  hideModal = modal.hide.bind(modal, 150);
+  variable = new PhraseVariable(_.extend({}, this.variables[i], {phrase: this}));
+
   promise = variable.prompt(300);
-  promise.then(this._setData.bind(this));
+  
+  // hide model, refocus caret
+  promise.fail(function () {
+    hideModal();
+    composer.editor.caret.focus();
+  });
+
+  // save form data and hide modal
+  promise = promise.then(this._setData.bind(this)).then(hideModal);
+
+  // if there is another var, prompt for that one next
   if (typeof this.variables[i+1] !== 'undefined') {
     promise = promise.then(this.prompt.bind(this, i+1));
   }
+  
   return promise;
 };
 
@@ -45,10 +60,18 @@ var PhraseVariable = function (props) {
   this.name = props.name;
   this.type = props.type || 'freetext';
   this.options = props.options || {};
+  this.phrase = props.phrase;
 };
 
 PhraseVariable.prototype.prompt = function (duration) {
-  return modal.prompt(this.name, duration);
+  return modal.prompt({
+    // official modal options
+    duration: duration,
+    data: {
+      header: this.phrase.title,
+      name: this.name
+    }
+  });
 };
 
 

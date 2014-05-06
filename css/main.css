@@ -87,7 +87,9 @@ html, body, #editor {
 
 
 
-#modal {
+.modal-overlay {
+  background-color: rgb(255,255,255);
+  background-color: rgba(255,255,255,0.8);
   content: " ";
   display: none;
   height: 100%;
@@ -98,61 +100,95 @@ html, body, #editor {
   width: 100%;
 }
 
-#modal.overlay {
-  background-color: rgba(255,255,255,0.8);
+.modal-positioner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
 }
 
-#modal .content {
-  background-color: #fff;
-  border: 1px solid #ccc;
+.modal-container {
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0,0,0,0.12);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 100px;
-  padding: 5px 20px 15px;
-  position: relative;
-  text-align: left;
-  width: 75%;
-  max-width: 400px;
-}
-
-#modal .content .close {
-  color: #aaa;
-  font-weight: bold;
-  position: absolute;
-  right: 8px;
-  top: 0;
-}
-
-#modal .content input,
-#modal .content textarea,
-#modal .content :focus {
-  background-color: #f2f2f2q;
-  border: 0;
-  border-radius: 3px;
-  outline: 0;
-  width: 100%;
-}
-
-#modal .content label {
-  color: #666;
   font-family: 'Open Sans', sans-serif;
+  font-size: 12px;
+  text-align: left;
+  width: 400px;
+  position: absolute;
+  top: -500px;
+  left: -200px;
+  height: auto;
+}
+
+.modal-close-icon {
+  color: #222;
+  position: absolute;
+  right: 11px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.modal-content label {
+  color: #666;
   font-size: 10px;
   text-transform: uppercase;
 }
 
-#modal .content .field {
+.modal-text-field,
+.modal-text-field:focus {
+  border: 0;
+  border-bottom: 1px dotted #ddd;
   color: #333;
   font-family: 'Lora', 'serif';
   font-size: 20px;
+  outline: 0;
+  width: 100%;
 }
 
-.buttons button, 
-.buttons .button {
-  background-color: #3276b1;
-  border: 0;
+.modal-header, .modal-footer {
+  padding: 10px 20px;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 15px 20px;
+}
+
+.modal-header {
+  background-color: #444;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px 4px 0 0;
+  box-shadow: inset 0 1px 0 #666;
   color: white;
   font-weight: bold;
-  padding: 6px 10px;
+}
+
+.modal-footer {
+  background-color: #f1f1f1;
+  border: 1px solid #e5e5e5;
+  border-radius: 0 0 4px 4px;
+}
+
+.modal-content {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.button {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 2px 10px 3px;
+  box-shadow: inset 0 1px 0 #fff;
+  text-shadow: 0 -1px 0 #fff;
+  color: #333;
+}
+
+.button-blue {
+  background-color: #3276b1;
+  border: 1px solid #276da5;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 0 1px 0 #498bc1;
+  text-shadow: 0 1px 0 #276da5;
 }

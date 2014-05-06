@@ -1,6 +1,0 @@
-<label>
-  {{label}}
-  <div class="field">
-    <input name="{{field}}" type="text">
-  </div>
-</label>
