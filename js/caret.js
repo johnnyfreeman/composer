@@ -2,7 +2,7 @@ var Caret = function (element) {
   this.el = element;
   this.document = element.ownerDocument;
   this.window = this.document.defaultView || this.document.parentWindow;
-  this.selection = this.window.getSelection();
+  this.selection = this.window.getSelection() || this.document.selection;
 };
 
 // update Range object
