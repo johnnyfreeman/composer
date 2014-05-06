@@ -104,9 +104,9 @@ html, body, #editor {
 
 #modal .content {
   background-color: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.04);
+  box-shadow: 0 0 15px rgba(0,0,0,0.12);
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
@@ -128,7 +128,7 @@ html, body, #editor {
 #modal .content input,
 #modal .content textarea,
 #modal .content :focus {
-  background-color: #fafafa;
+  background-color: #f2f2f2q;
   border: 0;
   border-radius: 3px;
   outline: 0;
