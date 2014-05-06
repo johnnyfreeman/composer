@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lora', 'serif';
+  padding: 0;
+  margin: 0;
+}
+
+/*#toolbar {
+  background-color: #222;
+  padding: 0;
+  margin: 0;
+}
+
+#toolbar li {
+  display: inline;
+  list-style: none;
+  margin-right: 1px;
+}
+
+#toolbar li a {
+  background-color: #272727;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px rgba(0,0,0,0.5);
+}
+
+#toolbar li a:hover {
+  background-color: #3276b1;
+  color: #fff;
+}*/
+
+#toolbar {
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#toolbar li {
+  list-style: none;
+}
+
+#toolbar li a {
+  color: rgba(0,0,0,0.15);
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px;
+}
+
+#toolbar:hover li a {
+  color: rgba(0,0,0,0.3);
+}
+
+#toolbar li a:hover {
+  color: #444;
+}
+
+html, body, #editor {
+  height: 100%;
+  width: 100%;
+}
+
+#editor {
+  width: 90%;
+}
+
+#toolbar, #editor {
+  padding: 15px 20px;
+}
+
+#editor:focus {
+  border: 0;
+  outline: 0;
+}
+
+#editor .placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+
+
+
+#modal {
+  content: " ";
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+#modal.overlay {
+  background-color: rgba(255,255,255,0.8);
+}
+
+#modal .content {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.04);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  padding: 5px 20px 15px;
+  position: relative;
+  text-align: left;
+  width: 75%;
+  max-width: 400px;
+}
+
+#modal .content .close {
+  color: #aaa;
+  font-weight: bold;
+  position: absolute;
+  right: 8px;
+  top: 0;
+}
+
+#modal .content input,
+#modal .content textarea,
+#modal .content :focus {
+  background-color: #fafafa;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  width: 100%;
+}
+
+#modal .content label {
+  color: #666;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+#modal .content .field {
+  color: #333;
+  font-family: 'Lora', 'serif';
+  font-size: 20px;
+}
+
+.buttons button, 
+.buttons .button {
+  background-color: #3276b1;
+  border: 0;
+  color: white;
+  font-weight: bold;
+  padding: 6px 10px;
+}

@@ -1,0 +1,2 @@
+var templates = {};
+templates.prompt = new Hogan.Template(function(c,p,i){var _=this;_.b(i=i||"");_.b("<label>");_.b("\n" + i);_.b("  ");_.b(_.v(_.f("name",c,p,0)));_.b("\n" + i);_.b("  <div class=\"field\">");_.b("\n" + i);_.b("    <input name=\"");_.b(_.v(_.f("name",c,p,0)));_.b("\" type=\"text\">");_.b("\n" + i);_.b("  </div>");_.b("\n" + i);_.b("</label>");return _.fl();});

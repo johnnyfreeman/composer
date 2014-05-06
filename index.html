@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Composer</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+
+    <!-- editor toolbar -->
+    <ul id="toolbar"><!-- 
+      <li>
+        <a data-insert="MY SAVED PHRASE. " href="#"><i class="fa fa-bars fa-lg"></i></a>
+      </li> -->
+      <li>
+        <a data-insert="MY SAVED PHRASE" href="#"><i class="fa fa-comments fa-lg"></i></a>
+      </li>
+      <li>
+        <a data-editor="clear" href="#"><i class="fa fa-eraser fa-lg"></i></a>
+      </li>
+      <li>
+        <a data-editor="save" href="#"><i class="fa fa-floppy-o fa-lg"></i></a>
+      </li>
+    </ul>
+
+    <!-- editor -->
+    <div id="editor" contentEditable="true"></div>
+
+    <!-- modal -->
+    <div class="overlay" id="modal">
+      <div class="content">
+        <span class="close">&times;</span>
+      </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script src="http://oss.maxcdn.com/jquery.velocity/0.0.0/jquery.velocity.min.js"></script>
+    <script src="http://twitter.github.com/hogan.js/builds/2.0.0/hogan-2.0.0.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/lodash.js"></script>
+    <script src="js/q.js"></script>
+    <script src="js/keypress.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/phrase.js"></script>
+    <script src="js/phraseexpander.js"></script>
+    <script src="js/placeholder.js"></script>
+    <script src="js/caret.js"></script>
+    <script src="js/toolbar.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/composer.js"></script>
+    <script src="js/index.js"></script>
+
+  </body>
+</html>
