@@ -49,7 +49,6 @@ Modal.prototype.show = function (duration) {
 };
 
 Modal.prototype.prompt = function (options) {
-
   // render modal
   var $container = $(this.el).find('.modal-container');
   $container.html(templates.modal.render(options.data));
@@ -59,13 +58,11 @@ Modal.prototype.prompt = function (options) {
     // prompt
     .then(function (modalEl) {
       var deferred = Q.defer();
+      $container.find('input').trigger('focus');
       // set on keyup enter event
-      $container.find('input').trigger('focus').on('keyup', function (e) {
-        if (e.keyCode == 13) {
-          var data = {};
-          data[options.data.name] = $(this).val();
-          deferred.resolve(data);
-        }
+      $container.find('form').on('submit', function (e) {
+        e.preventDefault();
+        return deferred.resolve($(this).serializeJSON());
       });
       $container.find('[data-modal="hide"]').on('click', deferred.reject);
       return deferred.promise;

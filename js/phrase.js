@@ -3,7 +3,7 @@ var Phrase = function (props) {
   this.phrase = '';
   this.trigger = props.trigger;
   this.variables = props.variables || [];
-  this.data = {};
+  this.data = [];
 
   // TODO: compilation should be done 
   // when the phrase is save to the database
@@ -65,7 +65,6 @@ var PhraseVariable = function (props) {
 
 PhraseVariable.prototype.prompt = function (duration) {
   return modal.prompt({
-    // official modal options
     duration: duration,
     data: {
       header: this.phrase.title,
