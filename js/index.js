@@ -8,5 +8,6 @@ var composer = new Composer({
 // plugins
 composer.initialize(PhraseExpander);
 composer.initialize(PlaceHolder);
+composer.initialize(Debugger);
 
 $(document.getElementById('editor')).trigger('focus');
