@@ -59,7 +59,6 @@ Modal.prototype.prompt = function (options) {
     .then(function (modalEl) {
       var deferred = Q.defer();
       $container.find('input').trigger('focus');
-      // set on keyup enter event
       $container.find('form').on('submit', function (e) {
         e.preventDefault();
         return deferred.resolve($(this).serializeJSON());
